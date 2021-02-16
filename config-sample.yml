@@ -1,5 +1,0 @@
-development:
-  password: PASS
-  theme_id: THEME_ID
-  store: vuejs-starter-theme.myshopify.com
-  timeout: 3m0s
