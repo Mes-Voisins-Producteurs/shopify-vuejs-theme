@@ -1,8 +1,11 @@
 {{'collection.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'collection.js' | asset_url }}" defer></script>
 
+{% assign collection_json = collection | json | replace: "'", \2019 %}
+
+
 <div class="py-20 bg-gray-100 border-b">
     <div class="container">
-        <h1 class="page-heading h1 text-2xl md:text-3xl lg:text-4xl">{{ collection.title }}</h1>
+        <collection-main config='{{collection_json}}'></collection-main>
     </div>
 </div>

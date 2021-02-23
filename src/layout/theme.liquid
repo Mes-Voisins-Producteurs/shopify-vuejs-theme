@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="{{ shop.locale }}">
-  <head>
+    <head>
 
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="" />
-    <link rel="canonical" href="{{ canonical_url }}" />
-    {% include 'page-title' %}
-    <meta name="description" content="{{ page_description | default: shop.description | default: shop.name }}">
+        <meta charset="utf-8"/>
+        <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+        <meta content="width=device-width,initial-scale=1" name="viewport"/>
+        <meta content="" name="theme-color"/>
+        <link rel="canonical" href="{{ canonical_url }}"/>
+        {% include 'page-title' %}
+        <meta name="description" content="{{ page_description | default: shop.description | default: shop.name }}">
 
-    {{content_for_header }}
+        {{content_for_header }}
 
-    {% comment %}
+        {% comment %}
       Global Styles
     {% endcomment %}
-    {% include 'styles__global' %}
+        {% include 'styles__global' %}
 
-    {% comment %}
+        {% comment %}
       Global Scripts
     {% endcomment %}
-    {% include 'scripts__global' %}
+        {% include 'scripts__global' %}
 
-  </head>
+    </head>
 
-  <body class="template-{{ request.page_type | handle }}">
+    <body class="template-{{ request.page_type | handle }}">
 
-    {% comment %}
+        {% comment %}
       Header section
     {% endcomment %}
-    {% section 'main-header' %}
+        {% section 'main-header' %}
 
-    {% comment %}
+        {% comment %}
       Main contents of tha page
     {% endcomment %}
-    {{ content_for_layout }}
+        {{ content_for_layout }}
 
-    {% comment %}
+        {% comment %}
       Footer section
     {% endcomment %}
-    {% section 'main-footer' %}
+        {% section 'main-footer' %}
 
-  </body>
+    </body>
 </html>

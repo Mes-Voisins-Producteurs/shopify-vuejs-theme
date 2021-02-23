@@ -47,11 +47,15 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
+    "autoprefixer": "^9",
     "axios": "^0.19.2",
     "document-register-element": "^1.13.1",
     "lazysizes": "^5.2.2",
+    "moment": "^2.29.1",
+    "postcss": "^7",
     "slugify": "^1.4.0",
-    "tailwindcss": "^1.4.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "v-lazy-image": "^1.4.0",
     "vue": "^2.5.21",
     "vue-axios": "^2.1.5",
     "vue-content-placeholders": "^0.2.1",
