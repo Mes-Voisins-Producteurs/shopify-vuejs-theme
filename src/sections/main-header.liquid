@@ -10,7 +10,7 @@
                     <ul class="flex flex-row justify-between ">
                         {%- for link in linklists.main-menu-2.links -%}
                             <li class="hover-trigger mx-4 whitespace-nowrap">
-                                <a href="{{ link.url }}" {% if link.active %} aria-current="page" {% endif %}>
+                                <a class="text-white" href="{{ link.url }}" {% if link.active %} aria-current="page" {% endif %}>
                                     {{ link.title }}
                                 </a>
 

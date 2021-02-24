@@ -24,7 +24,7 @@
 
     </head>
 
-    <body class="template-{{ request.page_type | handle }}">
+    <body class="template-{{ request.page_type | handle }}" style="visibility: hidden;">
 
         {% comment %}
       Header section
@@ -43,3 +43,9 @@
 
     </body>
 </html>
+
+<style>
+body {
+    visibility: visible !important;
+  }
+</style>

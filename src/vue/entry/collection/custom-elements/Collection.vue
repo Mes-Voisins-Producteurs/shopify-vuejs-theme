@@ -7,9 +7,7 @@
       </h1>
       <p v-html="collection.body_html"></p>
       <div class="flex-wrap flex">
-        <div v-for="product in this.loadedProducts" class="w-72">
-          <product-card :productstr="JSON.stringify(product)"></product-card>
-        </div>
+        <product-card v-for="product in this.loadedProducts" class="w-72" :product="product"></product-card>
       </div>
       <infinite-loading spinner="waveDots" class="w-full	h-16 border-2" @infinite="infiniteHandler"></infinite-loading>
     </div>

@@ -2,6 +2,10 @@
   <div>
     <h2>{{ product.title }}</h2>
     <v-lazy-image class="object-cover h-48 w-full" :alt="product.title" :src="product.featured_image" :src-placeholder="product.placeholder_image" />
+
+    <button class="add-button">
+      Ajouter au panier
+    </button>
   </div>
 </template>
 
@@ -13,15 +17,16 @@ export default {
     VLazyImage
   },
   props: {
-    productstr: { type: String }
+    product: { type: Object }
   },
   data() {
     return {
-      product: null
+      // product: null
     };
   },
   created() {
-    this.product = JSON.parse(this.productstr);
+    // this.product = JSON.parse(this.productstr);
+    // console.log(this.pro);
   }
 };
 </script>
