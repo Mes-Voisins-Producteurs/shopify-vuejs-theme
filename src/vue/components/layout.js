@@ -7,18 +7,20 @@ import ProductCard from "@vue/components/custom-element/ProductCard.vue";
 
 import Vue from 'vue'
 import {
-  Button
+  Button,
+  Card
 } from 'element-ui'
 import lang from 'element-ui/lib/locale/lang/fr'
 import locale from 'element-ui/lib/locale'
 
 locale.use(lang)
 
-console.log(Button)
 Vue.use(Button)
+Vue.use(Card)
 
 export default {
   "theme-add-to-cart": ExampleAddToCart,
+  "theme-cart-counter": ExampleCartCounter,
   "main-menu": MainMenu,
   "product-card": ProductCard,
 };

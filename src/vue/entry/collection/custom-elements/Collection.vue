@@ -7,7 +7,7 @@
       </h1>
       <p v-html="collection.body_html"></p>
       <div class="flex-wrap flex">
-        <product-card v-for="product in this.loadedProducts" class="w-72" :product="product" :key="product.id"></product-card>
+        <product-card v-for="product in this.loadedProducts" class="w-72 m-4" :product="product" :key="product.id"></product-card>
       </div>
       <infinite-loading spinner="waveDots" class="w-full	h-16 border-2" @infinite="infiniteHandler"></infinite-loading>
     </div>
@@ -62,7 +62,7 @@ export default {
       console.log("fetchProduct ", handle, " page ", page);
 
       this.$productService
-        .getAll({
+        .getAllGraphQL({
           handle,
           tags,
           page,
@@ -93,7 +93,7 @@ export default {
   mounted() {
     this.collection = JSON.parse(this.config);
 
-    this.$store.commit("collection/SET_COLLECTION", this.collection.handle);
+    // this.$store.commit("collection/SET_COLLECTION", this.collection.handle);
 
     this.handle = this.collection.handle;
     this.page = 1;
