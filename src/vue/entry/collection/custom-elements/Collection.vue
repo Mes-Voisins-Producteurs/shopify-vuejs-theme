@@ -25,7 +25,7 @@ import moment from "moment";
 import ProductCard from "@vue/components/custom-element/ProductCard.vue";
 
 export default {
-  props: ["config"],
+  props: ["config", "productcount"],
   components: {
     InfiniteLoading,
     ProductCard
@@ -44,7 +44,9 @@ export default {
       page: 1,
       handle: null,
       loadedProducts: [],
-      collectionProductsCount: 0
+      collectionProductsCount: 0,
+      hasNextPage: true,
+      cursor: null
     };
   },
   methods: {
@@ -55,24 +57,28 @@ export default {
     },
     fetchProducts($state) {
       let handle = this.handle;
+      let cursor = this.cursor;
       let tags = [];
-      let page = this.page;
       let sortBy = null;
 
-      console.log("fetchProduct ", handle, " page ", page);
+      console.log("fetchProduct ", handle, " cursor ", cursor);
 
       this.$productService
         .getAllGraphQL({
           handle,
           tags,
-          page,
+          cursor,
           sortBy
         })
         .then(response => {
-          this.collectionProductsCount = response.info.productsCount;
+          // this.collectionProductsCount = response.info.productsCount;
+
+          this.hasNextPage = response.info.hasNextPage;
+          this.cursor = response.info.cursor;
+
           this.loadedProducts = this.loadedProducts.concat(response.items);
 
-          if (this.allProductsFetched) {
+          if (!this.hasNextPage) {
             console.log("COMPLETE");
             $state.complete();
           } else {
@@ -84,6 +90,7 @@ export default {
           this.$store.commit("collection/SET_CACHED_COLLECTIONS", {
             handle: this.handle,
             page: this.page,
+            cursor: this.cursor,
             loadedProducts: this.loadedProducts,
             collectionProductsCount: this.collectionProductsCount
           });
@@ -92,6 +99,7 @@ export default {
   },
   mounted() {
     this.collection = JSON.parse(this.config);
+    this.collectionProductsCount = this.productcount;
 
     // this.$store.commit("collection/SET_COLLECTION", this.collection.handle);
 
@@ -109,6 +117,7 @@ export default {
         console.log("the cached collection is still relrevant");
 
         this.page = cachedCollection.page;
+        this.cursor = cachedCollection.cursor;
         this.loadedProducts = cachedCollection.loadedProducts;
         this.collectionProductsCount = cachedCollection.collectionProductsCount;
       } else {
